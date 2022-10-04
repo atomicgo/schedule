@@ -1,9 +1,6 @@
 /*
-Package template is used to generate new AtomicGo repositories.
+Package schedule provides a simple scheduler for Go.
 
-Write the description of the module here. You can use **markdown**!
-This description should clearly explain what the package does.
-
-Example description: https://golang.org/src/encoding/gob/doc.go
+It can run a function at a given time, in a given duration, or repeatedly at a given interval.
 */
-package template
+package schedule
