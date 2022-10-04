@@ -1,4 +1,4 @@
-<h1 align="center">AtomicGo | schedulee</h1>
+<h1 align="center">AtomicGo | schedule</h1>
 
 <p align="center">
 <img src="https://img.shields.io/endpoint?url=https://atomicgo.dev/api/shields/schedule&style=flat-square" alt="Downloads">
@@ -19,13 +19,13 @@
 <!-- unittestcount:start --><img src="https://img.shields.io/badge/Unit_Tests-0-magenta?style=flat-square" alt="Unit test count"><!-- unittestcount:end -->
 </a>
 
-<a href="https://github.com/atomicgo/schedule/issues">
-<img src="https://img.shields.io/github/issues/atomicgo/schedule.svg?style=flat-square" alt="Issues">
-</a>
-
 <a href="https://opensource.org/licenses/MIT" target="_blank">
 <img src="https://img.shields.io/badge/License-MIT-yellow.svg?style=flat-square" alt="License: MIT">
 </a>
+  
+<a href="https://goreportcard.com/report/github.com/atomicgo/schedule" target="_blank">
+<img src="https://goreportcard.com/badge/github.com/atomicgo/schedule" alt="Go report">
+</a>   
 
 </p>
 
