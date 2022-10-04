@@ -7,7 +7,7 @@ repository:
   description: ⏰ Easily schedule non-blocking tasks in Go. Supports durations, specific times and intervals.
 
   # A comma-separated list of topics to set on the repository
-  topics: atomicgo, go, golang, golang-library, scheduler, time, ticker, schedule, timer
+  topics: atomicgo, go, golang, golang-library, scheduler, time, ticker, schedule, timer, hacktoberfest
 
   # Either `true` to make the repository private, or `false` to make it public.
   #  private: false
