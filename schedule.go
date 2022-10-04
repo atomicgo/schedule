@@ -29,7 +29,7 @@ func (s *Task) NextExecutionTime() time.Time {
 
 // ExecutesIn returns the duration until the next execution.
 func (s *Task) ExecutesIn() time.Duration {
-	return s.nextExecution.Sub(time.Now())
+	return time.Until(s.nextExecution)
 }
 
 // IsActive returns true if the scheduler is active.
@@ -80,7 +80,7 @@ func At(t time.Time, task func()) *Task {
 
 	go func() {
 		select {
-		case <-time.After(t.Sub(time.Now())):
+		case <-time.After(time.Until(t)):
 			task()
 			scheduler.Stop()
 		case <-scheduler.stop:
