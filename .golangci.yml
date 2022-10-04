@@ -44,7 +44,6 @@ linters:
     - goprintffuncname
     - misspell
     - nilerr
-    - nlreturn
     - noctx
     - prealloc
     - predeclared
