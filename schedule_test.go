@@ -1,12 +1,14 @@
-package schedule
+package schedule_test
 
 import (
 	"fmt"
 	"time"
+
+	"atomicgo.dev/schedule"
 )
 
 func ExampleAfter() {
-	task := After(5*time.Second, func() {
+	task := schedule.After(5*time.Second, func() {
 		fmt.Println("5 seconds are over!")
 	})
 
@@ -16,7 +18,7 @@ func ExampleAfter() {
 }
 
 func ExampleAt() {
-	task := At(time.Now().Add(5*time.Second), func() {
+	task := schedule.At(time.Now().Add(5*time.Second), func() {
 		fmt.Println("5 seconds are over!")
 	})
 
@@ -26,7 +28,7 @@ func ExampleAt() {
 }
 
 func ExampleEvery() {
-	task := Every(5*time.Second, func() {
+	task := schedule.Every(5*time.Second, func() {
 		fmt.Println("5 seconds are over!")
 	})
 
