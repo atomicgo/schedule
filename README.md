@@ -1,4 +1,4 @@
-<h1 align="center">AtomicGo | schedule</h1>
+<h1 align="center">AtomicGo | schedulee</h1>
 
 <p align="center">
 <img src="https://img.shields.io/endpoint?url=https://atomicgo.dev/api/shields/schedule&style=flat-square" alt="Downloads">
