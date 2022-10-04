@@ -4,10 +4,10 @@ repository:
   # See https://developer.github.com/v3/repos/#edit for all available settings.
 
   # A short description of the repository that will show up on GitHub
-  description: 📦 Template repository for AtomicGo repositories
+  description: ⏰ Easily schedule non-blocking tasks in Go. Supports durations, specific times and intervals.
 
   # A comma-separated list of topics to set on the repository
-  topics: atomicgo, go, golang, golang-library
+  topics: atomicgo, go, golang, golang-library, scheduler, time, ticker, schedule, timer
 
   # Either `true` to make the repository private, or `false` to make it public.
   #  private: false
