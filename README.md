@@ -1,4 +1,4 @@
-<h1 align="center">AtomicGo | schedulee</h1>
+<h1 align="center">AtomicGo | schedule</h1>
 
 <p align="center">
 
@@ -98,7 +98,7 @@ It can run a function at a given time, in a given duration, or repeatedly at a g
   - [func (s *Task) Wait()](<#func-task-wait>)
 
 
-## type Task
+## type [Task](<https://github.com/atomicgo/schedule/blob/main/schedule.go#L6-L10>)
 
 Task holds information about the running task and can be used to stop running tasks.
 
@@ -108,7 +108,7 @@ type Task struct {
 }
 ```
 
-### func After
+### func [After](<https://github.com/atomicgo/schedule/blob/main/schedule.go#L58>)
 
 ```go
 func After(d time.Duration, task func()) *Task
@@ -143,7 +143,7 @@ func main() {
 </p>
 </details>
 
-### func At
+### func [At](<https://github.com/atomicgo/schedule/blob/main/schedule.go#L77>)
 
 ```go
 func At(t time.Time, task func()) *Task
@@ -178,7 +178,7 @@ func main() {
 </p>
 </details>
 
-### func Every
+### func [Every](<https://github.com/atomicgo/schedule/blob/main/schedule.go#L96>)
 
 ```go
 func Every(interval time.Duration, task func()) *Task
@@ -215,7 +215,7 @@ func main() {
 </p>
 </details>
 
-### func \(\*Task\) ExecutesIn
+### func \(\*Task\) [ExecutesIn](<https://github.com/atomicgo/schedule/blob/main/schedule.go#L31>)
 
 ```go
 func (s *Task) ExecutesIn() time.Duration
@@ -223,7 +223,7 @@ func (s *Task) ExecutesIn() time.Duration
 
 ExecutesIn returns the duration until the next execution.
 
-### func \(\*Task\) IsActive
+### func \(\*Task\) [IsActive](<https://github.com/atomicgo/schedule/blob/main/schedule.go#L36>)
 
 ```go
 func (s *Task) IsActive() bool
@@ -231,7 +231,7 @@ func (s *Task) IsActive() bool
 
 IsActive returns true if the scheduler is active.
 
-### func \(\*Task\) NextExecutionTime
+### func \(\*Task\) [NextExecutionTime](<https://github.com/atomicgo/schedule/blob/main/schedule.go#L26>)
 
 ```go
 func (s *Task) NextExecutionTime() time.Time
@@ -239,7 +239,7 @@ func (s *Task) NextExecutionTime() time.Time
 
 NextExecutionTime returns the time when the next execution will happen.
 
-### func \(\*Task\) StartedAt
+### func \(\*Task\) [StartedAt](<https://github.com/atomicgo/schedule/blob/main/schedule.go#L21>)
 
 ```go
 func (s *Task) StartedAt() time.Time
@@ -247,7 +247,7 @@ func (s *Task) StartedAt() time.Time
 
 StartedAt returns the time when the scheduler was started.
 
-### func \(\*Task\) Stop
+### func \(\*Task\) [Stop](<https://github.com/atomicgo/schedule/blob/main/schedule.go#L52>)
 
 ```go
 func (s *Task) Stop()
@@ -255,7 +255,7 @@ func (s *Task) Stop()
 
 Stop stops the scheduler.
 
-### func \(\*Task\) Wait
+### func \(\*Task\) [Wait](<https://github.com/atomicgo/schedule/blob/main/schedule.go#L47>)
 
 ```go
 func (s *Task) Wait()
