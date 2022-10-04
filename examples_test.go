@@ -28,8 +28,8 @@ func ExampleAt() {
 }
 
 func ExampleEvery() {
-	task := schedule.Every(5*time.Second, func() {
-		fmt.Println("5 seconds are over!")
+	task := schedule.Every(time.Second, func() {
+		fmt.Println("1 second is over!")
 	})
 
 	fmt.Println("Some stuff happening...")
