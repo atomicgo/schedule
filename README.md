@@ -15,7 +15,7 @@
 </a>
 
 <a href="https://codecov.io/gh/atomicgo/schedule">
-<!-- unittestcount:start --><img src="https://img.shields.io/badge/Unit_Tests-1-magenta?style=flat-square" alt="Unit test count"><!-- unittestcount:end -->
+<!-- unittestcount:start --><img src="https://img.shields.io/badge/Unit_Tests-0-magenta?style=flat-square" alt="Unit test count"><!-- unittestcount:end -->
 </a>
 
 <a href="https://github.com/atomicgo/schedule/issues">
@@ -80,12 +80,82 @@ given interval.
 
 ## Usage
 
-#### func  HelloWorld
+#### type Task
 
 ```go
-func HelloWorld() string
+type Task struct {
+}
 ```
-HelloWorld returns `Hello, World!`.
+
+Task holds information about the running task and can be used to stop running
+tasks.
+
+#### func  After
+
+```go
+func After(d time.Duration, task func()) *Task
+```
+After executes the task after the given duration. The function is non-blocking.
+If you want to wait for the task to be executed, use the Task.Wait method.
+
+#### func  At
+
+```go
+func At(t time.Time, task func()) *Task
+```
+At executes the task at the given time. The function is non-blocking. If you
+want to wait for the task to be executed, use the Task.Wait method.
+
+#### func  Every
+
+```go
+func Every(interval time.Duration, task func()) *Task
+```
+Every executes the task in the given interval. The function is non-blocking. If
+you want to wait for the task to be executed, use the Task.Wait method.
+
+#### func (*Task) ExecutesIn
+
+```go
+func (s *Task) ExecutesIn() time.Duration
+```
+ExecutesIn returns the duration until the next execution.
+
+#### func (*Task) IsActive
+
+```go
+func (s *Task) IsActive() bool
+```
+IsActive returns true if the scheduler is active.
+
+#### func (*Task) NextExecutionTime
+
+```go
+func (s *Task) NextExecutionTime() time.Time
+```
+NextExecutionTime returns the time when the next execution will happen.
+
+#### func (*Task) StartedAt
+
+```go
+func (s *Task) StartedAt() time.Time
+```
+StartedAt returns the time when the scheduler was started.
+
+#### func (*Task) Stop
+
+```go
+func (s *Task) Stop()
+```
+Stop stops the scheduler.
+
+#### func (*Task) Wait
+
+```go
+func (s *Task) Wait()
+```
+Wait blocks until the scheduler is stopped. After and At will stop automatically
+after the task is executed.
 
 ---
 
