@@ -163,6 +163,7 @@ linters-settings:
       - d any
       - data any
       - n any
+      - t time.Time
       - f func()
       - cb func()
       - t testing.T

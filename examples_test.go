@@ -30,6 +30,7 @@ func ExampleAt() {
 func ExampleEvery() {
 	task := schedule.Every(time.Second, func() bool {
 		fmt.Println("1 second is over!")
+
 		return true // return false to stop the task
 	})
 
