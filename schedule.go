@@ -55,13 +55,13 @@ func (s *Task) Stop() {
 
 // After executes the task after the given duration.
 // The function is non-blocking. If you want to wait for the task to be executed, use the Task.Wait method.
-func After(d time.Duration, task func()) *Task {
+func After(duration time.Duration, task func()) *Task {
 	scheduler := newTask()
-	scheduler.nextExecution = time.Now().Add(d)
+	scheduler.nextExecution = time.Now().Add(duration)
 
 	go func() {
 		select {
-		case <-time.After(d):
+		case <-time.After(duration):
 			task()
 			scheduler.Stop()
 		case <-scheduler.stop:
@@ -104,9 +104,12 @@ func Every(interval time.Duration, task func() bool) *Task {
 			select {
 			case <-ticker.C:
 				task()
+
 				scheduler.nextExecution = time.Now().Add(interval)
+
 			case <-scheduler.stop:
 				ticker.Stop()
+
 				return
 			}
 		}
