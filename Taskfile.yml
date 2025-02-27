@@ -8,29 +8,24 @@
 # │                                                                   │
 # └───────────────────────────────────────────────────────────────────┘
 
-name: Tweet release
+version: "3"
 
-# Listen to the `release` event
-on:
-  release:
-    types: [published]
+tasks:
+  test:
+    desc: Run all tests
+    cmds:
+      - go test ./...
+  tdd:
+    desc: Test Driven Development - Watch tests
+    watch: true
+    sources:
+      - "**/*.go"
+    cmds:
+      - go test ./...
 
-jobs:
-  tweet:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: Eomm/why-don-t-you-tweet@v1
-        # We don't want to tweet if the repository is not a public one
-        if: ${{ !github.event.repository.private }}
-        with:
-          tweet-message:
-            "New ${{ github.event.repository.name }} release: ${{ github.event.release.tag_name }}! 🎉
-
-            Try it out: atomicgo.dev/${{ github.event.repository.name }}
-
-            #go #golang #opensource #library #release #atomicgo"
-        env:
-          TWITTER_CONSUMER_API_KEY: ${{ secrets.TWITTER_CONSUMER_API_KEY }}
-          TWITTER_CONSUMER_API_SECRET: ${{ secrets.TWITTER_CONSUMER_API_SECRET }}
-          TWITTER_ACCESS_TOKEN: ${{ secrets.TWITTER_ACCESS_TOKEN }}
-          TWITTER_ACCESS_TOKEN_SECRET: ${{ secrets.TWITTER_ACCESS_TOKEN_SECRET }}
+  lint:
+    desc: Run all linters
+    cmds:
+      - go mod tidy
+      - wsl --allow-cuddle-declarations --force-err-cuddling --force-case-trailing-whitespace 3 --fix ./...
+      - golangci-lint run

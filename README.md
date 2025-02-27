@@ -76,7 +76,7 @@ It can run a function at a given time, in a given duration, or repeatedly at a g
 ## Index
 
 - [type Task](<#Task>)
-  - [func After\(d time.Duration, task func\(\)\) \*Task](<#After>)
+  - [func After\(duration time.Duration, task func\(\)\) \*Task](<#After>)
   - [func At\(t time.Time, task func\(\)\) \*Task](<#At>)
   - [func Every\(interval time.Duration, task func\(\) bool\) \*Task](<#Every>)
   - [func \(s \*Task\) ExecutesIn\(\) time.Duration](<#Task.ExecutesIn>)
@@ -102,7 +102,7 @@ type Task struct {
 ### func [After](<https://github.com/atomicgo/schedule/blob/main/schedule.go#L58>)
 
 ```go
-func After(d time.Duration, task func()) *Task
+func After(duration time.Duration, task func()) *Task
 ```
 
 After executes the task after the given duration. The function is non\-blocking. If you want to wait for the task to be executed, use the Task.Wait method.
@@ -201,6 +201,7 @@ import (
 func main() {
 	task := schedule.Every(time.Second, func() bool {
 		fmt.Println("1 second is over!")
+
 		return true // return false to stop the task
 	})
 
