@@ -7,6 +7,7 @@ type Task struct {
 	stop          chan struct{}
 	nextExecution time.Time
 	startedAt     time.Time
+	stopped       bool
 }
 
 // newTask creates a new Task.
@@ -34,12 +35,7 @@ func (s *Task) ExecutesIn() time.Duration {
 
 // IsActive returns true if the scheduler is active.
 func (s *Task) IsActive() bool {
-	select {
-	case <-s.stop:
-		return false
-	default:
-		return true
-	}
+	return !s.stopped
 }
 
 // Wait blocks until the scheduler is stopped.
@@ -50,6 +46,11 @@ func (s *Task) Wait() {
 
 // Stop stops the scheduler.
 func (s *Task) Stop() {
+	if s.stopped {
+		return
+	}
+
+	s.stopped = true
 	close(s.stop)
 }
 
@@ -103,7 +104,10 @@ func Every(interval time.Duration, task func() bool) *Task {
 		for {
 			select {
 			case <-ticker.C:
-				task()
+				res := task()
+				if !res {
+					scheduler.Stop()
+				}
 
 				scheduler.nextExecution = time.Now().Add(interval)
 
