@@ -46,11 +46,12 @@ func (s *Task) Wait() {
 
 // Stop stops the scheduler.
 func (s *Task) Stop() {
-	if !s.stopped {
-		close(s.stop)
+	if s.stopped {
+		return
 	}
 
 	s.stopped = true
+	close(s.stop)
 }
 
 // After executes the task after the given duration.
