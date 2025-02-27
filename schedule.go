@@ -110,6 +110,7 @@ func Every(interval time.Duration, task func() bool) *Task {
 				}
 
 				scheduler.nextExecution = time.Now().Add(interval)
+
 			case <-scheduler.stop:
 				ticker.Stop()
 
