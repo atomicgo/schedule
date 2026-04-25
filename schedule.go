@@ -74,6 +74,7 @@ func After(duration time.Duration, task func()) *Task {
 			if !timer.Stop() {
 				<-timer.C // drain if necessary
 			}
+
 			return
 		}
 	}()
@@ -86,10 +87,12 @@ func After(duration time.Duration, task func()) *Task {
 func At(t time.Time, task func()) *Task {
 	scheduler := newTask()
 	scheduler.nextExecution = t
+
 	d := time.Until(t)
 	if d < 0 {
 		d = 0
 	}
+
 	timer := time.NewTimer(d)
 
 	go func() {
@@ -101,6 +104,7 @@ func At(t time.Time, task func()) *Task {
 			if !timer.Stop() {
 				<-timer.C
 			}
+
 			return
 		}
 	}()
@@ -122,9 +126,12 @@ func Every(interval time.Duration, task func() bool) *Task {
 				if !task() {
 					scheduler.Stop()
 					ticker.Stop()
+
 					return
 				}
+
 				scheduler.nextExecution = time.Now().Add(interval)
+
 			case <-scheduler.stop:
 				ticker.Stop()
 				return
